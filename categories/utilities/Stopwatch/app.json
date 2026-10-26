@@ -9,5 +9,6 @@
   "description": "Precision digital stopwatch with lap tracking, analytics, and file export.",
   "permissions": [
     "storage"
-  ]
+  ],
+  "metaUrl": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/utilities/Stopwatch/app.json"
 }

@@ -6,5 +6,6 @@
   "author": "shifat100",
   "type": "Game",
   "category": "Arcade",
-  "description": "Modern neon-styled Tetris with ghost piece, smooth touch controls, and high scores."
+  "description": "Modern neon-styled Tetris with ghost piece, smooth touch controls, and high scores.",
+  "metaUrl": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/tetris/app.json"
 }

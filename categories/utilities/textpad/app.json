@@ -9,5 +9,6 @@
   "description": "Full-featured text file reader and line editor for KryonOS.",
   "permissions": [
     "storage"
-  ]
+  ],
+  "metaUrl": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/utilities/textpad/app.json"
 }

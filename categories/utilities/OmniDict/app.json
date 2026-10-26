@@ -10,5 +10,6 @@
   "permissions": [
     "storage",
     "network"
-  ]
+  ],
+  "metaUrl": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/utilities/OmniDict/app.json"
 }
