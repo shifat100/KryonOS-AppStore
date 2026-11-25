@@ -49,6 +49,13 @@
       "app_sha256": "c77bcb8384bcaf27f1b437559e0b34f43fc90e343e9e5fde50e29d1f4b2671dd",
       "api": 1
     },
+    "Oggy: Rocket Chase": {
+      "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/oggy-rocket-chase/app.json",
+      "meta_sha256": "e9073503ec6ef9866eb2936305451e845bbc6cf64b323ff9610aa9d502b96948",
+      "app": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/oggy-rocket-chase/main.js",
+      "app_sha256": "",
+      "api": 1
+    },
     "OrbSnake": {
       "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/orbsnake/app.json",
       "meta_sha256": "af1f9d6728905e8a1f243c0f6083ddb1c5dbb119f3abb745c410cdb1b0524f93",
