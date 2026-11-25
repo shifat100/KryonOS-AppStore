@@ -1,0 +1,12 @@
+{
+  "name": "OrbSnake",
+  "packageName": "com.shifat100.orbsnake",
+  "version": "1.0.1",
+  "metaUrl": "",
+  "api": 1,
+  "author": "Shifat100",
+  "type": "Game",
+  "category": "Games",
+  "description": " 2D and dynamic-camera 3D OrbSnake with dot-wave loader, particles, and persistent best score.",
+  "changelog": "initial release"
+}
