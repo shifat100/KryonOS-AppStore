@@ -1,0 +1,14 @@
+{
+  "name": "Oggy: Rocket Chase",
+  "packageName": "com.shifat100.oggychase",
+
+  "version": "1.0.0",
+  "metaUrl": "",
+  "api": 1,
+  "author": "Shifat100",
+
+  "type": "Game",
+  "category": "Games",
+  "description": "Oggy chases Joey, Dee Dee, and Marky on a runaway rocket wagon! Jump hazards, collect fish for Turbo Ram, and switch live between 2D and 3D camera modes.",
+  "changelog": "Initial KryonOS release"
+}
