@@ -4,6 +4,27 @@
  */
 
 // ============================================================
+// Standard RGB565 Color Constants
+// ============================================================
+var BLACK       = 0x0000;
+var NAVY        = 0x000F;
+var DARKGREEN   = 0x03E0;
+var DARKCYAN    = 0x03EF;
+var MAROON      = 0x7800;
+var PURPLE      = 0x780F;
+var OLIVE       = 0x7BE0;
+var LIGHTGREY   = 0xC618;
+var DARKGREY    = 0x7BEF;
+var BLUE        = 0x001F;
+var GREEN       = 0x07E0;
+var CYAN        = 0x07FF;
+var RED         = 0xF800;
+var MAGENTA     = 0xF81F;
+var YELLOW      = 0xFFE0;
+var WHITE       = 0xFFFF;
+var ORANGE      = 0xFD20;
+
+// ============================================================
 // Layout & Screen Setup
 // ============================================================
 var SCREEN_W = System.screenWidth();
@@ -460,4 +481,4 @@ while (true) {
 
     // সিস্টেম ওয়াচডগ ফিড ও স্থির ৬০ এফপিএস
     System.delay(16);
-      }
+}
