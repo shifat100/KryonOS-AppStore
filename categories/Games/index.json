@@ -49,6 +49,13 @@
       "app_sha256": "e5a1b06223a43c54fb81fa6d8d99ea3e6327408981cf93f649ff316ef62f9d02",
       "api": 2
     },
+    "Oggy: Roach Rush": {
+      "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/oggy-roach-rush/app.json",
+      "meta_sha256": "30d22c53b64806088662216d2e6b98edf4f9599b7339e49f1cc10fc070e2efd8",
+      "app": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/oggy-roach-rush/main.js",
+      "app_sha256": "",
+      "api": 1
+    },
     "Snake": {
       "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/snake/app.json",
       "meta_sha256": "1a59150b96bdda5f39da65ef4529224acf282a6321f47f124ba4945d76f255f7",
