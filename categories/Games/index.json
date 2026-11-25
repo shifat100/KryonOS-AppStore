@@ -28,6 +28,13 @@
       "app_sha256": "b18859767797595f6d2ca283e036dba0df4e5dca2176fb217c19e0ea79819503",
       "api": 1
     },
+    "Cheese Chase": {
+      "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/cheese-chase/app.json",
+      "meta_sha256": "0af74e2662d7b2147f3231ed23c4f9f59c6f39a31e3a93fc7452f8dbfd07175e",
+      "app": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/cheese-chase/main.js",
+      "app_sha256": "",
+      "api": 1
+    },
     "Crossy Road": {
       "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/crossy-road/app.json",
       "meta_sha256": "e340fb8098b2f74dfe496a141da2ac9b129233ae9ace79846cc33417c6cbd2be",
