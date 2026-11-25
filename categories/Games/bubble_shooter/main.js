@@ -4,6 +4,27 @@
  */
 
 // ============================================================
+// Standard RGB565 Color Constants
+// ============================================================
+var BLACK       = 0x0000;
+var NAVY        = 0x000F;
+var DARKGREEN   = 0x03E0;
+var DARKCYAN    = 0x03EF;
+var MAROON      = 0x7800;
+var PURPLE      = 0x780F;
+var OLIVE       = 0x7BE0;
+var LIGHTGREY   = 0xC618;
+var DARKGREY    = 0x7BEF;
+var BLUE        = 0x001F;
+var GREEN       = 0x07E0;
+var CYAN        = 0x07FF;
+var RED         = 0xF800;
+var MAGENTA     = 0xF81F;
+var YELLOW      = 0xFFE0;
+var WHITE       = 0xFFFF;
+var ORANGE      = 0xFD20;
+
+// ============================================================
 // Display & Layout Configuration
 // ============================================================
 var SCREEN_W = System.screenWidth();
@@ -22,7 +43,7 @@ var ROW_HEIGHT = 17; // Hexagonal vertical step: R * sqrt(3)
 
 var GRID_ROWS = 12;
 
-// Color Palette (RGB565 via KryonOS System constants)
+// Color Palette
 var COLOR_BG = BLACK;
 var COLOR_BORDER = DARKGREY;
 var COLOR_TEXT = WHITE;
@@ -33,7 +54,7 @@ var BUBBLE_COLORS = [
     GREEN,      // 1: Green
     BLUE,       // 2: Blue
     YELLOW,     // 3: Yellow
-    PURPLE,     // 4: Magenta / Purple
+    MAGENTA,    // 4: Magenta / Purple
     CYAN        // 5: Cyan / Sky
 ];
 
@@ -208,7 +229,6 @@ function resetGame() {
 // Popping & Falling Animation Triggers
 // ============================================================
 function triggerBubblePop(x, y, color) {
-    // Expanding ring and spark particles
     poppingBubbles.push({
         x: x,
         y: y,
@@ -217,9 +237,12 @@ function triggerBubblePop(x, y, color) {
         maxRadius: BUBBLE_RADIUS + 7,
         alpha: 8,
         sparks: [
-            { vx: -2.0, vy: -1.5 }, { vx: 2.0, vy: -1.5 },
-            { vx: -1.5, vy: 2.0 },  { vx: 1.5, vy: 2.0 },
-            { vx: 0.0,  vy: -2.5 }, { vx: 0.0, vy: 2.5 }
+            { x: x, y: y, vx: -2.0, vy: -1.5 },
+            { x: x, y: y, vx:  2.0, vy: -1.5 },
+            { x: x, y: y, vx: -1.5, vy:  2.0 },
+            { x: x, y: y, vx:  1.5, vy:  2.0 },
+            { x: x, y: y, vx:  0.0, vy: -2.5 },
+            { x: x, y: y, vx:  0.0, vy:  2.5 }
         ]
     });
     playTone(1200, 30);
@@ -243,8 +266,8 @@ function updateAnimations() {
         pop.radius += 0.8;
         pop.alpha--;
         for (var s = 0; s < pop.sparks.length; s++) {
-            pop.sparks[s].x = (pop.sparks[s].x || pop.x) + pop.sparks[s].vx;
-            pop.sparks[s].y = (pop.sparks[s].y || pop.y) + pop.sparks[s].vy;
+            pop.sparks[s].x += pop.sparks[s].vx;
+            pop.sparks[s].y += pop.sparks[s].vy;
         }
         if (pop.alpha <= 0 || pop.radius >= pop.maxRadius) {
             poppingBubbles.splice(p, 1);
@@ -569,8 +592,8 @@ function render() {
         System.setTextColor(WHITE, COLOR_BG);
         System.drawString("KryonOS Edition", Math.floor(SCREEN_W / 2) - 45, 160, 2);
 
-        System.fillRoundRect(35, 200, 170, 36, 6, 0x03E0);
-        System.setTextColor(WHITE, 0x03E0);
+        System.fillRoundRect(35, 200, 170, 36, 6, DARKGREEN);
+        System.setTextColor(WHITE, DARKGREEN);
         System.drawString("TAP TO START", Math.floor(SCREEN_W / 2) - 45, 210, 2);
     } 
     else if (gameState === STATE_PLAYING) {
@@ -619,7 +642,7 @@ function render() {
             // Sparks
             for (var s = 0; s < pop.sparks.length; s++) {
                 var sp = pop.sparks[s];
-                System.fillCircle(Math.floor(sp.x || pop.x), Math.floor(sp.y || pop.y), 2, pop.color);
+                System.fillCircle(Math.floor(sp.x), Math.floor(sp.y), 2, pop.color);
             }
         }
 
