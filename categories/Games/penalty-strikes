@@ -1,0 +1,13 @@
+{
+  "name": "Penalty Strike",
+  "packageName": "com.shifat100.penaltystrike",
+  "version": "1.3.0",
+  "metaUrl": "",
+  "api": 1,
+  "author": "Shifat100",
+
+  "type": "Game",
+  "category": "Games",
+  "description": "Realistic 2D/3D Penalty Kick Shooter with 2-bone skeletal body rigging for striker & diving goalkeeper, curve physics, wind, and post reflections.",
+  "changelog": "Initial Release"
+}
