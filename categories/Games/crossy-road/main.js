@@ -423,6 +423,18 @@ function updatePhysics(dt) {
 // ----------------------------------------------------------------------------
 // 9. রেন্ডারিং ইঞ্জিন
 // ----------------------------------------------------------------------------
+// Helper: Center text horizontally across an X coordinate
+function drawTextCentered(text, cx, cy, font) {
+    var str = String(text);
+    var charW = 7;
+    if (font === 1) charW = 6;
+    else if (font === 2) charW = 7.5;
+    else if (font === 4) charW = 15;
+    var w = Math.floor(str.length * charW);
+    var x = Math.floor(cx - (w / 2));
+    System.drawString(str, x, cy, font);
+}
+
 function drawVectorArrow(cx, cy, dir, color) {
     if (dir === "up") {
         System.fillTriangle(cx, cy - 8, cx - 8, cy + 1, cx + 8, cy + 1, color);
@@ -452,7 +464,7 @@ function drawPlayer(px, py, jumpOffset) {
             System.drawCircle(bx + 8, by + 8, 10, C_CYAN);
             return;
         } else if (lastDeathReason === "SNATCHED BY EAGLE") {
-            return; // ঈগল নিয়ে গেছে, স্ক্রিনে মুরগি নেই
+            return;
         } else {
             System.fillRect(bx - 2, by + 12, 20, 5, C_WHITE);
             System.fillRect(bx + 5, by + 10, 6, 3, C_RED);
@@ -621,32 +633,30 @@ function renderOverlays(baseY) {
         System.fillRoundRect(22, baseY + 64, 196, 112, 6, C_PANEL_BG);
         System.drawRoundRect(22, baseY + 64, 196, 112, 6, C_RED);
 
-        System.setTextDatum(4);
         System.setTextColor(C_RED, C_PANEL_BG);
-        System.drawString("GAME OVER", 120, baseY + 84, 4);
+        drawTextCentered("GAME OVER", 120, baseY + 72, 4);
 
         System.setTextColor(System.color(160, 170, 190), C_PANEL_BG);
-        System.drawString(lastDeathReason, 120, baseY + 108, 1);
+        drawTextCentered(lastDeathReason, 120, baseY + 104, 1);
 
         System.setTextColor(C_WHITE, C_PANEL_BG);
-        System.drawString("SCORE: " + String(score), 120, baseY + 128, 2);
+        drawTextCentered("SCORE: " + String(score), 120, baseY + 122, 2);
 
         System.setTextColor(C_CYAN, C_PANEL_BG);
-        System.drawString("TAP TO PLAY AGAIN", 120, baseY + 154, 2);
+        drawTextCentered("TAP TO PLAY AGAIN", 120, baseY + 148, 2);
     } 
     else if (gameState === "TITLE") {
         System.fillRoundRect(22, baseY + 60, 196, 120, 6, C_PANEL_BG);
         System.drawRoundRect(22, baseY + 60, 196, 120, 6, C_CYAN);
 
-        System.setTextDatum(4);
         System.setTextColor(C_CYAN, C_PANEL_BG);
-        System.drawString("CROSSY ROAD", 120, baseY + 84, 4);
+        drawTextCentered("CROSSY ROAD", 120, baseY + 72, 4);
 
         System.setTextColor(C_GOLD, C_PANEL_BG);
-        System.drawString("BEST RECORD: " + String(highScore), 120, baseY + 116, 2);
+        drawTextCentered("BEST RECORD: " + String(highScore), 120, baseY + 110, 2);
 
         System.setTextColor(C_WHITE, C_PANEL_BG);
-        System.drawString("TAP TO HOP IN", 120, baseY + 150, 2);
+        drawTextCentered("TAP TO HOP IN", 120, baseY + 146, 2);
     }
 }
 
@@ -660,7 +670,6 @@ function drawFullUI() {
     System.drawFastHLine(0, GAME_Y - 1, 240, C_BORDER);
 
     System.setTextColor(C_CYAN, C_PANEL_BG);
-    System.setTextDatum(0);
     System.drawString("CROSSY", 8, 5, 2);
 
     updateScoreHeader();
@@ -671,7 +680,6 @@ function updateScoreHeader() {
     System.fillRect(90, 2, 146, 20, C_PANEL_BG);
 
     System.setTextColor(C_WHITE, C_PANEL_BG);
-    System.setTextDatum(0);
     System.drawString("SCR: " + String(score), 96, 5, 2);
 
     System.setTextColor(C_GOLD, C_PANEL_BG);
@@ -700,7 +708,7 @@ function renderFrame() {
     if (hasDoubleBuffer) {
         System.bindSprite(true);
         renderWorldFrame(0);
-        renderOverlays(0); // স্প্রাইটের ভেতর ওভারলে আঁকা (নো ফ্লিকার)
+        renderOverlays(0);
         System.bindSprite(false);
         System.pushSprite(0, GAME_Y);
     } else {
