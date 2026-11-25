@@ -168,6 +168,17 @@ function saveHighScore() {
 // ----------------------------------------------------------------------------
 // Drawing Helpers
 // ----------------------------------------------------------------------------
+function drawTextCentered(text, cx, cy, font) {
+    var str = String(text);
+    var charW = 7;
+    if (font === 1) charW = 6;
+    else if (font === 2) charW = 7.5;
+    else if (font === 4) charW = 15;
+    var w = Math.floor(str.length * charW);
+    var x = Math.floor(cx - (w / 2));
+    System.drawString(str, x, cy, font);
+}
+
 function drawBeveledBlock(px, py, colorIdx, size) {
     var c = PIECE_COLORS[colorIdx];
     var hi = PIECE_HIGHLIGHTS[colorIdx];
@@ -317,7 +328,6 @@ function drawMainLayout() {
     System.fillRoundRect(8, 6, 110, 22, 4, COLOR_PANEL);
     System.drawRoundRect(8, 6, 110, 22, 4, COLOR_BORDER);
     System.setTextColor(COLOR_ACCENT, COLOR_PANEL);
-    System.setTextDatum(0);
     System.drawString("TETRIS NEON", 16, 10, 2);
 
     // Board Outer Border
@@ -365,8 +375,7 @@ function drawTouchControls() {
         System.drawRoundRect(b.x, by, b.w, bh, 5, COLOR_BTN_BORDER);
 
         System.setTextColor(fgCol, bgCol);
-        System.setTextDatum(4);
-        System.drawString(b.label, b.x + Math.floor(b.w / 2), by + 25, 4);
+        drawTextCentered(b.label, b.x + Math.floor(b.w / 2), by + 14, 4);
     }
 }
 
@@ -375,7 +384,6 @@ function drawStats() {
 
     System.fillRect(px + 8, 118, 90, 20, COLOR_PANEL);
     System.setTextColor(COLOR_YELLOW, COLOR_PANEL);
-    System.setTextDatum(0);
     System.drawString(String(score), px + 8, 118, 2);
 
     System.fillRect(px + 8, 170, 90, 20, COLOR_PANEL);
@@ -465,28 +473,26 @@ function drawScene() {
         System.fillRoundRect(24, 90, 192, 100, 6, COLOR_BG);
         System.drawRoundRect(24, 90, 192, 100, 6, COLOR_RED);
 
-        System.setTextDatum(4);
         System.setTextColor(COLOR_RED, COLOR_BG);
-        System.drawString("GAME OVER", 120, 115, 4);
+        drawTextCentered("GAME OVER", 120, 104, 4);
 
         System.setTextColor(COLOR_TEXT_HEAD, COLOR_BG);
-        System.drawString("Score: " + String(score), 120, 142, 2);
+        drawTextCentered("Score: " + String(score), 120, 136, 2);
 
         System.setTextColor(COLOR_ACCENT, COLOR_BG);
-        System.drawString("Tap Screen to Play", 120, 168, 2);
+        drawTextCentered("Tap Screen to Play", 120, 160, 2);
     } else if (gameState === "TITLE") {
         System.fillRoundRect(24, 90, 192, 100, 6, COLOR_BG);
         System.drawRoundRect(24, 90, 192, 100, 6, COLOR_ACCENT);
 
-        System.setTextDatum(4);
         System.setTextColor(COLOR_ACCENT, COLOR_BG);
-        System.drawString("TETRIS", 120, 115, 4);
+        drawTextCentered("TETRIS", 120, 104, 4);
 
         System.setTextColor(COLOR_YELLOW, COLOR_BG);
-        System.drawString("Best: " + String(highScore), 120, 142, 2);
+        drawTextCentered("Best: " + String(highScore), 120, 136, 2);
 
         System.setTextColor(COLOR_TEXT_HEAD, COLOR_BG);
-        System.drawString("Tap Screen to Start", 120, 168, 2);
+        drawTextCentered("Tap Screen to Start", 120, 160, 2);
     }
 }
 
@@ -573,6 +579,9 @@ function handleTouchInput() {
         return;
     }
 
+    // Bypass KryonOS exit zone
+    if (t.x >= 195 && t.y <= 40) return;
+
     var now = System.millis();
     if (now - lastTouchTime < 130) return;
     lastTouchTime = now;
@@ -606,3 +615,37 @@ function handleTouchInput() {
             if (tx >= b.x && tx <= b.x + b.w) {
                 activeTouchBtn = b.id;
                 drawTouchControls();
+
+                if (b.id === "left") moveLeft();
+                else if (b.id === "right") moveRight();
+                else if (b.id === "rotate") rotatePiece();
+                else if (b.id === "soft") softDrop();
+                else if (b.id === "hard") hardDrop();
+                break;
+            }
+        }
+        return;
+    }
+}
+
+// ----------------------------------------------------------------------------
+// Execution & Main Game Loop
+// ----------------------------------------------------------------------------
+loadHighScore();
+
+drawMainLayout();
+drawScene();
+
+while (true) {
+    handleTouchInput();
+
+    if (gameState === "PLAYING") {
+        var now = System.millis();
+        if (now - lastDropTime >= dropInterval) {
+            lastDropTime = now;
+            softDrop();
+        }
+    }
+
+    System.delay(20);
+}
