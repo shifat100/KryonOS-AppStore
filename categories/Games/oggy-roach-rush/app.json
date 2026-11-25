@@ -1,0 +1,13 @@
+{
+  "name": "Oggy: Roach Rush",
+  "packageName": "com.shifat100.roachrush",
+
+  "version": "1.0.0",
+  "metaUrl": "",
+  "api": 1,
+  "author": "Shifat100",
+  "type": "Game",
+  "category": "Games",
+  "description": "Oggy and the Cockroaches arcade defense: guard the fridge, swat Joey, Dee Dee, and Marky, dodge banana peels, and grab Mega Bug Spray.",
+  "changelog": "Initial KryonOS release"
+}
