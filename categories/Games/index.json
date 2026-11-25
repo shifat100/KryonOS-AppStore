@@ -7,13 +7,6 @@
       "app_sha256": "0701a756c126f38f65c6904671172edb7b948dc82e50c90bdde55795e1344a9b",
       "api": 1
     },
-    "OrbSnake": {
-      "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/OrbSnake/app.json",
-      "meta_sha256": "5409e5805caf0d656b6f4d73a500db35024e6a897f2c6b4f4e4fa6e2c48a8de6",
-      "app": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/OrbSnake/main.js",
-      "app_sha256": "e44aaf4287e4a49699067bb68d529cc9dc00779c07fb8e50243557f132eaea37",
-      "api": 1
-    },
     "Bubble Pop": {
       "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/bubble-pop/app.json",
       "meta_sha256": "ea48232c996935166d58b092f6fe7cec79de6192354c3e2bd69e9a83fd06e6da",
@@ -54,6 +47,13 @@
       "meta_sha256": "30d22c53b64806088662216d2e6b98edf4f9599b7339e49f1cc10fc070e2efd8",
       "app": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/oggy-roach-rush/main.js",
       "app_sha256": "c77bcb8384bcaf27f1b437559e0b34f43fc90e343e9e5fde50e29d1f4b2671dd",
+      "api": 1
+    },
+    "OrbSnake": {
+      "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/orbsnake/app.json",
+      "meta_sha256": "af1f9d6728905e8a1f243c0f6083ddb1c5dbb119f3abb745c410cdb1b0524f93",
+      "app": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/orbsnake/main.js",
+      "app_sha256": "",
       "api": 1
     },
     "Snake": {
