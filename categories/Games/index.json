@@ -74,7 +74,7 @@
       "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/sector9/app.json",
       "meta_sha256": "04027539091a2610d548ac72e2e6c891c81a5268dc0985c6d96478c2f23d3d68",
       "app": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/sector9/main.js",
-      "app_sha256": "",
+      "app_sha256": "a8e0bfe902106e1a2fbc15949167e0a916bc341f3e1c3282b19a808b61c1eb2a",
       "api": 1
     },
     "Snake": {
