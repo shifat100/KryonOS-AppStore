@@ -1,0 +1,13 @@
+{
+  "name": "Cheese Chase",
+  "packageName": "com.shifat100.cheesechase",
+  "version": "1.0.0",
+
+  "metaUrl": "",
+  "api": 1,
+  "author": "Shifat100",
+  "type": "Game",
+  "category": "Games",
+  "description": "Tom & Jerry style kitchen maze chase: collect Swiss cheese, dodge mousetraps, slip through mouse holes, and bonk cats with spicy peppers.",
+  "changelog": "Initial KryonOS release"
+}
