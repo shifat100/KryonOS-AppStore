@@ -53,7 +53,7 @@
       "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/tetris/app.json",
       "meta_sha256": "943e10b6b6de07abb2d5732dfd76950762dc79b61c848f6f97b9db4c737f45b3",
       "app": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/tetris/main.js",
-      "app_sha256": "014c84683b2fbc23f1e398987f0d423d0de7451be0c84ce261ea3c775b848932",
+      "app_sha256": "18c2010db964064efe7d3ea0521e74e31305d6664739a58f1f0e1d8d60057723",
       "api": 1
     },
     "Tictactoe": {
