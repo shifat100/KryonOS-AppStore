@@ -67,7 +67,7 @@
       "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/starskiff/app.json",
       "meta_sha256": "d3429728ef70e1d060a5d6b4c23224627039311a63b7331132c2b9837ed19e1c",
       "app": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/starskiff/main.js",
-      "app_sha256": "",
+      "app_sha256": "0e44fa2d224bec2acc8cd3d7c3bd9fcce061a02b98be3cea63a1c4f265c9d375",
       "api": 1
     },
     "Tetris": {
