@@ -7,6 +7,13 @@
       "app_sha256": "0701a756c126f38f65c6904671172edb7b948dc82e50c90bdde55795e1344a9b",
       "api": 1
     },
+    "OrbSnake": {
+      "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/OrbSnake/app.json",
+      "meta_sha256": "5409e5805caf0d656b6f4d73a500db35024e6a897f2c6b4f4e4fa6e2c48a8de6",
+      "app": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/OrbSnake/main.js",
+      "app_sha256": "",
+      "api": 1
+    },
     "Bubble Pop": {
       "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/bubble-pop/app.json",
       "meta_sha256": "ea48232c996935166d58b092f6fe7cec79de6192354c3e2bd69e9a83fd06e6da",
