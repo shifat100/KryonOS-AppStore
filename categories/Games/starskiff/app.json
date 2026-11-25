@@ -1,0 +1,13 @@
+{
+  "name": "Star Skiff",
+  "packageName": "com.shifat100.starskiff",
+
+  "version": "1.0.0",
+  "metaUrl": "",
+  "api": 1,
+  "author": "Shifat100",
+  "type": "Game",
+  "category": "Games",
+  "description": "Sci-fi canyon runner and plasma shooter with seamless 2D and perspective 3D modes, Sun Shard warp jumps, and persistent best score.",
+  "changelog": "Initial KryonOS release"
+}
