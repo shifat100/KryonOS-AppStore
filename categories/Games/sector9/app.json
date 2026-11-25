@@ -1,0 +1,13 @@
+{
+  "name": "Sector-9 FPS",
+  "packageName": "com.shifat100.sector9fps",
+  "version": "1.1.0",
+  "metaUrl": "",
+  "api": 1,
+  "author": "Shifat100",
+
+  "type": "Game",
+  "category": "Games",
+  "description": "First-person 3D raycaster shooter with articulated 2-bone rigged human army enemies, rifles, wall occlusion clipping, live 2D tactical mode, and 3 bunker levels.",
+  "changelog": "Initial Release"
+}
