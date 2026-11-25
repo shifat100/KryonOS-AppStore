@@ -67,7 +67,7 @@
       "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/penalty-strikes/app.json",
       "meta_sha256": "0266825da08590fe9f8ad504507ca05e02bcf504c749184afe9bfd91de7f5122",
       "app": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/penalty-strikes/main.js",
-      "app_sha256": "",
+      "app_sha256": "e5d5da1212e98103e236f00b3892f2b0db3106de9be5d89dcce84eea8a81c462",
       "api": 1
     },
     "Snake": {
