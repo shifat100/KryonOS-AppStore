@@ -186,7 +186,6 @@ function triggerGameOver() {
 // ----------------------------------------------------------------------------
 function changeDirection(dx, dy) {
     if (gameState !== "PLAYING") return;
-    // ১৮০ ডিগ্রি ঘুরে নিজের গায়ে আঘাত রোধ (Anti-Reverse)
     if (dx !== 0 && dirX === -dx) return;
     if (dy !== 0 && dirY === -dy) return;
 
@@ -208,7 +207,7 @@ function updateSnakeLogic(dt) {
 
     if (gameState !== "PLAYING") return;
 
-    // বোনাস পোকা/ইনসেক্ট টাইমার আপডেট
+    // বোনাস পোকা টাইমার আপডেট
     if (bonusFood) {
         bonusFood.timeLeft -= dt;
         if (bonusFood.timeLeft <= 0) {
@@ -230,7 +229,7 @@ function updateSnakeLogic(dt) {
     var newX = head.x + dirX;
     var newY = head.y + dirY;
 
-    // Snake Xenzia Wall Wrapping (বর্ডার পার হলে অপর পাশে আগমন)
+    // Snake Xenzia Wall Wrapping
     if (newX < 0) newX = GRID_COLS - 1;
     else if (newX >= GRID_COLS) newX = 0;
 
@@ -260,7 +259,6 @@ function updateSnakeLogic(dt) {
 
         spawnFood();
 
-        // প্রতি ৫টি খাবার খাওয়ার পর বোনাস বাগ আসবে
         if (foodsEatenCount % 5 === 0 && !bonusFood) {
             spawnBonusBug();
         }
@@ -271,7 +269,7 @@ function updateSnakeLogic(dt) {
         score += bonusPoints;
         bonusFood = null;
     } 
-    // খাবার না খেলে লেজ কেটে দৈর্ঘ্য স্থির রাখা
+    // খাবার না খেলে লেজ কেটে দৈর্ঘ্য বজায় রাখা
     else {
         snake.pop();
     }
@@ -280,6 +278,18 @@ function updateSnakeLogic(dt) {
 // ----------------------------------------------------------------------------
 // 8. রেন্ডারিং ও আঁকাআঁকি
 // ----------------------------------------------------------------------------
+// Helper: Center text horizontally across an X coordinate
+function drawTextCentered(text, cx, cy, font) {
+    var str = String(text);
+    var charW = 7;
+    if (font === 1) charW = 6;
+    else if (font === 2) charW = 7.5;
+    else if (font === 4) charW = 15;
+    var w = Math.floor(str.length * charW);
+    var x = Math.floor(cx - (w / 2));
+    System.drawString(str, x, cy, font);
+}
+
 function drawVectorArrow(cx, cy, dir, color) {
     if (dir === "up") {
         System.fillTriangle(cx, cy - 8, cx - 8, cy + 1, cx + 8, cy + 1, color);
@@ -311,13 +321,13 @@ function renderBoard(offsetY) {
         System.fillRect(239, offsetY + b, 1, 3, C_LCD_SHADOW);
     }
 
-    // ১. সাধারণ খাবার রেন্ডার (ক্লাসিক ডট-ম্যাট্রিক্স কিউব)
+    // ১. সাধারণ খাবার রেন্ডার
     var fx = food.x * CELL_SIZE;
     var fy = offsetY + food.y * CELL_SIZE;
     System.fillRect(fx + 2, fy + 2, 8, 8, C_LCD_DARK);
-    System.fillRect(fx + 4, fy + 4, 4, 4, C_LCD_BG); // সেন্টারে ফাঁপা অ্যাপল লুক
+    System.fillRect(fx + 4, fy + 4, 4, 4, C_LCD_BG);
 
-    // ২. বোনাস বাগ রেন্ডার (কাউন্টডাউনসহ ব্লিঙ্কিং পোকা)
+    // ২. বোনাস বাগ রেন্ডার
     if (bonusFood) {
         var bx = bonusFood.x * CELL_SIZE;
         var by = offsetY + bonusFood.y * CELL_SIZE;
@@ -326,7 +336,6 @@ function renderBoard(offsetY) {
         if (blink) {
             System.fillRect(bx + 1, by + 3, 10, 6, C_LCD_BONUS);
             System.fillRect(bx + 3, by + 1, 6, 10, C_LCD_BONUS);
-            // পা ও শুঁড়
             System.fillRect(bx, by + 1, 2, 2, C_LCD_DARK);
             System.fillRect(bx + 10, by + 1, 2, 2, C_LCD_DARK);
             System.fillRect(bx, by + 9, 2, 2, C_LCD_DARK);
@@ -348,7 +357,6 @@ function renderBoard(offsetY) {
                 // মাথা (চোখসহ)
                 System.fillRoundRect(sx + 1, sy + 1, CELL_SIZE - 2, CELL_SIZE - 2, 2, C_LCD_DARK);
 
-                // চোখ (দিক অনুযায়ী বসবে)
                 var ex1 = sx + 3, ey1 = sy + 3;
                 var ex2 = sx + 8, ey2 = sy + 3;
                 if (dirX === 1) {       ex1 = sx + 7; ey1 = sy + 3; ex2 = sx + 7; ey2 = sy + 7; }
@@ -360,7 +368,6 @@ function renderBoard(offsetY) {
             } else {
                 // বডি সেগমেন্ট
                 System.fillRect(sx + 1, sy + 1, CELL_SIZE - 2, CELL_SIZE - 2, C_LCD_DARK);
-                // রেট্রো ডট প্যাটার্ন টেক্সচার
                 System.fillRect(sx + 4, sy + 4, 4, 4, C_LCD_SHADOW);
             }
         }
@@ -372,35 +379,33 @@ function renderOverlays(baseY) {
         System.fillRoundRect(22, baseY + 62, 196, 116, 6, C_PANEL_BG);
         System.drawRoundRect(22, baseY + 62, 196, 116, 6, C_RED);
 
-        System.setTextDatum(4);
         System.setTextColor(C_RED, C_PANEL_BG);
-        System.drawString("GAME OVER", 120, baseY + 84, 4);
+        drawTextCentered("GAME OVER", 120, baseY + 72, 4);
 
         System.setTextColor(C_WHITE, C_PANEL_BG);
-        System.drawString("SCORE: " + String(score), 120, baseY + 114, 2);
+        drawTextCentered("SCORE: " + String(score), 120, baseY + 106, 2);
 
         System.setTextColor(C_GOLD, C_PANEL_BG);
-        System.drawString("BEST: " + String(highScore), 120, baseY + 136, 2);
+        drawTextCentered("BEST: " + String(highScore), 120, baseY + 128, 2);
 
         System.setTextColor(C_CYAN, C_PANEL_BG);
-        System.drawString("TAP TO RETRY", 120, baseY + 160, 2);
+        drawTextCentered("TAP TO RETRY", 120, baseY + 152, 2);
     } 
     else if (gameState === "TITLE") {
         System.fillRoundRect(20, baseY + 56, 200, 128, 6, C_PANEL_BG);
         System.drawRoundRect(20, baseY + 56, 200, 128, 6, C_CYAN);
 
-        System.setTextDatum(4);
         System.setTextColor(C_CYAN, C_PANEL_BG);
-        System.drawString("SNAKE XENZIA", 120, baseY + 80, 4);
+        drawTextCentered("SNAKE XENZIA", 120, baseY + 68, 4);
 
         System.setTextColor(C_WHITE, C_PANEL_BG);
-        System.drawString("CLASSIC RETRO", 120, baseY + 108, 2);
+        drawTextCentered("CLASSIC RETRO", 120, baseY + 102, 2);
 
         System.setTextColor(C_GOLD, C_PANEL_BG);
-        System.drawString("RECORD: " + String(highScore), 120, baseY + 132, 2);
+        drawTextCentered("RECORD: " + String(highScore), 120, baseY + 124, 2);
 
         System.setTextColor(C_GOLD, C_PANEL_BG);
-        System.drawString("TAP TO START", 120, baseY + 162, 2);
+        drawTextCentered("TAP TO START", 120, baseY + 152, 2);
     }
 }
 
@@ -415,7 +420,6 @@ function drawFullUI() {
     System.drawFastHLine(0, GAME_Y - 1, 240, C_BORDER);
 
     System.setTextColor(C_CYAN, C_PANEL_BG);
-    System.setTextDatum(0);
     System.drawString("XENZIA", 8, 5, 2);
 
     updateScoreHeader();
@@ -426,7 +430,6 @@ function updateScoreHeader() {
     System.fillRect(80, 2, 156, 20, C_PANEL_BG);
 
     System.setTextColor(C_WHITE, C_PANEL_BG);
-    System.setTextDatum(0);
     System.drawString("SCR:" + String(score), 84, 5, 2);
 
     System.setTextColor(C_GOLD, C_PANEL_BG);
