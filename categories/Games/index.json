@@ -46,7 +46,7 @@
       "meta": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/snake/app.json",
       "meta_sha256": "1a59150b96bdda5f39da65ef4529224acf282a6321f47f124ba4945d76f255f7",
       "app": "https://raw.githubusercontent.com/Haris16-code/KryonOS-AppStore/refs/heads/main/categories/Games/snake/main.js",
-      "app_sha256": "3c980c711e4268ea5dd97e756a622076d98e2937196c3346f0d924f7f4dcad72",
+      "app_sha256": "ec7a222e527f1eafa87aa3fb46e4c7b73a20782e98addaeb6973f714389ce69f",
       "api": 1
     },
     "Tetris": {
